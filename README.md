@@ -1,5 +1,5 @@
 # 金融市场数据库  
-目前只完成database部分（修改过的部分要在README文件里写出来，就写在这一行）
+目前只完成database部分（修改过的部分要在README文件里写出来）
 ## Database
 
 ### player

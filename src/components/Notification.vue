@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div class="notification" v-if="message">{{ message }}</div>
 </template>
@@ -11,21 +10,16 @@ export default {
 </script>
 
 <style scoped>
-.notification{background:#fffae6;padding:8px;border:1px solid #ffe58f;border-radius:4px}
-</style>
-=======
-<template>
-  <div class="notification" v-if="message">{{ message }}</div>
-</template>
-
-<script>
-export default {
-  name: 'Notification',
-  props: { message: String }
+.notification {
+  background: var(--panel);
+  color: var(--text);
+  padding: 12px 20px;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
-</script>
-
-<style scoped>
-.notification{background:#fffae6;padding:8px;border:1px solid #ffe58f;border-radius:4px}
 </style>
->>>>>>> 7e7d29547309042be8bf78076eb4c461e2e49e60
