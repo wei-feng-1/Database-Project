@@ -1,0 +1,83 @@
+@import './base.css';
+
+/* Removed default Vue layout styles to allow full-width app */
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/*
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+*/
+
+/*
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+*/
+
+/*
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}
+*/
+
+:root {
+  --bg: #1A1A1D;
+  --bg-dark: #232428;
+  --panel: rgba(255, 255, 255, 0.05);
+  --primary: #3DAEFC;
+  --text: #CCCCCC;
+  --text-light: #8A8A8A;
+  --up: #4CAF50;
+  --down: #F44336;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.card {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: 0.2s;
+}
+
+.card:hover {
+  border: 1px solid var(--primary);
+  transform: translateY(-3px);
+}
+
+.button-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.button-primary:hover {
+  opacity: 0.8;
+}
