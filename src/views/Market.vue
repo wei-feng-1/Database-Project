@@ -56,11 +56,11 @@ const loadData = async () => {
   try {
     // 获取热门商品 (假设后端支持 sort 参数)
     const hotRes = await fetchListings({ sort: 'hot', limit: 4 })
-    hotItems.value = hotRes.data || []
+    hotItems.value = hotRes || []
 
     // 获取涨幅榜
     const gainersRes = await fetchListings({ sort: 'gainers', limit: 4 })
-    topGainers.value = gainersRes.data || []
+    topGainers.value = gainersRes || []
   } catch (error) {
     console.error('Failed to load market data:', error)
     // Fallback to mock data if API fails

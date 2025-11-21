@@ -48,7 +48,7 @@ onMounted(async () => {
   const id = route.params.id
   try {
     const res = await fetchItem(id)
-    item.value = res.data || {}
+    item.value = res || {}
   } catch (error) {
     console.error('Failed to fetch item:', error)
     // Fallback

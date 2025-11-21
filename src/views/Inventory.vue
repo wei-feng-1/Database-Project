@@ -48,7 +48,7 @@ onMounted(async () => {
   try {
     // Assuming user ID 1 for now
     const res = await fetchInventory(1)
-    inventoryItems.value = res.data || []
+    inventoryItems.value = res || []
     
     // Calculate stats
     itemCount.value = inventoryItems.value.length

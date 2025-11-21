@@ -86,7 +86,7 @@ onMounted(async () => {
   // Load items for dropdown
   try {
     const res = await fetchListings({ limit: 100 })
-    items.value = res.data || []
+    items.value = res || []
   } catch (e) {
     console.error(e)
     items.value = [

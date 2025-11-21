@@ -81,13 +81,13 @@ onMounted(async () => {
   try {
     // Fetch Profile (User ID 1)
     const profileRes = await fetchProfile(1)
-    if (profileRes.data) {
-      user.value = { ...user.value, ...profileRes.data }
+    if (profileRes) {
+      user.value = { ...user.value, ...profileRes }
     }
 
     // Fetch History
     const ordersRes = await fetchOrders({ userId: 1, limit: 5 })
-    history.value = ordersRes.data || []
+    history.value = ordersRes || []
   } catch (e) {
     console.error(e)
     // Fallback mock history
