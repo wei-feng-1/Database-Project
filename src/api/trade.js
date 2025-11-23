@@ -7,3 +7,7 @@ export function createOrder(payload) {
 export function fetchOrders(params) {
   return request.get('/trade/orders', { params })
 }
+
+export function cancelOrder(orderId, params) {
+  return request.delete(`/trade/orders/${orderId}`, { params })
+}

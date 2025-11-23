@@ -6,11 +6,14 @@ import com.gamemarket.repository.AssetRepository;
 import com.gamemarket.repository.MarketOrderRepository;
 import com.gamemarket.repository.TradeHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -39,6 +42,29 @@ public class TradeController {
         
         orderRepository.save(order);
         return Map.of("message", "Order created successfully");
+    }
+
+    @DeleteMapping("/orders/{id}")
+    public ResponseEntity<Map<String, String>> cancelOrder(@PathVariable Integer id, @RequestParam(required = false) Integer userId) {
+        Optional<MarketOrder> opt = orderRepository.findById(id);
+        if (opt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Order not found"));
+        }
+
+        MarketOrder order = opt.get();
+
+        // If userId provided, enforce ownership. In future replace with authenticated principal.
+        if (userId != null && !order.getPlayerId().equals(userId)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("message", "Not allowed to cancel this order"));
+        }
+
+        if (!"OPEN".equals(order.getStatus())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", "Order cannot be cancelled"));
+        }
+
+        order.setStatus("CANCELLED");
+        orderRepository.save(order);
+        return ResponseEntity.ok(Map.of("message", "Order cancelled"));
     }
 
     @GetMapping("/orders")
